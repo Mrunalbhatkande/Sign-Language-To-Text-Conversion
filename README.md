@@ -141,8 +141,7 @@ Application Working Diagram is as following :
 
 ![application](images/app.PNG)
 
-### 5. Results:
-I have achieved an accuracy of 95.8% in my model using only layer 1 of the algorithm, and using the combination of layer 1 and layer 2 I achieve an accuracy of 98.0%.
+
 
 
 
