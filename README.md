@@ -174,10 +174,7 @@ Note : Python 3.6 is required to build this project, as some of the libraries re
 11. hunspell -> pip install cyhunspell (A wrapper on hunspell for use in Python)
 ```
 
-## Running the Project 
 
-``` python
-python /path/to/the/Application.py
 ```
 
   
