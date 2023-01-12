@@ -32,40 +32,6 @@ The gestures I  trained are as given in the image below.
 
 ### 1. The first Step of building this project was of creating the folders for storing the training and testing data. As, in this project I have built my own dataset.
 
-``` python
-# Importing the Libraries Required
-
-import os
-import string
-
-# Creating the directory Structure
-
-if not os.path.exists("dataSet"):
-    os.makedirs("dataSet")
-
-if not os.path.exists("dataSet/trainingData"):
-    os.makedirs("dataSet/trainingData")
-
-if not os.path.exists("dataSet/testingData"):
-    os.makedirs("dataSet/testingData")
-
-# Making folder  0 (i.e blank) in the training and testing data folders respectively
-for i in range(0):
-    if not os.path.exists("dataSet/trainingData/" + str(i)):
-        os.makedirs("dataSet/trainingData/" + str(i))
-
-    if not os.path.exists("dataSet/testingData/" + str(i)):
-        os.makedirs("dataSet/testingData/" + str(i))
-
-# Making Folders from A to Z in the training and testing data folders respectively
-
-for i in string.ascii_uppercase:
-    if not os.path.exists("dataSet/trainingData/" + i):
-        os.makedirs("dataSet/trainingData/" + i)
-    
-    if not os.path.exists("dataSet/testingData/" + i):
-        os.makedirs("dataSet/testingData/" + i)
-```
 
 ### 2. The second step, after the folder creation is of creating the training and testing dataset.
 
@@ -79,24 +45,9 @@ After capturing the image from the ROI, I applied gaussian blur filter to the im
 
 The image after applying gaussian blur looks like below.
 
-![ROI](images/roi.png)
 
-### The code for image proceesing is as following :
 
-```python
-import numpy as np
-import cv2
-minValue = 70
-def func(path):    
-    frame = cv2.imread(path)
-    
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    blur = cv2.GaussianBlur(gray,(5,5),2)
 
-    th3 = cv2.adaptiveThreshold(blur,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2)
-    ret, res = cv2.threshold(th3, minValue, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-    return res
-```
 
 ### 3. After the creation of the training and testing data. The third step is of creating a model for training. Here, I have used Convolutional Neural Network(CNN) for building this model. The model summary is as following 
 
@@ -143,9 +94,9 @@ In convolution layer neurons are connected only to a local region, while in a fu
 ##### 4. Final Output Layer: 
 After getting values from fully connected layer, well connect them to final layer of neurons [having count equal to total number of classes], that will predict the probability of each image to be in different classes.
 
-![Model Summary](images/model_summary.PNG)
 
-![Output](images/output.PNG)
+
+
 
 ### 4: The final step after the model has been trained is of creating a GUI that will be used to convert Sings into text and form sentence, which would be helpful for communicating with D&M people.
 
@@ -182,7 +133,7 @@ So, to handle above cases I made three different classifiers for classifying the
 
 The GUI(Graphical User Interface) of the application is as shown below :
 
-![GUI](images/gui.png)
+
 
 Flow Chart for Gesture Classification is as following :
 
@@ -195,10 +146,6 @@ Application Working Diagram is as following :
 ### 5. Results:
 I have achieved an accuracy of 95.8% in my model using only layer 1 of the algorithm, and using the combination of layer 1 and layer 2 I achieve an accuracy of 98.0%.
 
-Below are the confusion matrices for our results:
-
-![algo1](images/algo1Result.jpg)
-![algo1 + algo2](images/algo12Result.jpg)
 
 
 ## Libraries Requirements -(Requires the latest pip version to install all the packages)
@@ -235,26 +182,5 @@ Note : Python 3.6 is required to build this project, as some of the libraries re
 ``` python
 python /path/to/the/Application.py
 ```
-# License
-
-Copyright (c) 2021 Nikhil Gupta
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
   
